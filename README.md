@@ -1,0 +1,3 @@
+# com_schedule
+
+SCHEDULE COMPONENT FOR JOOMLA
