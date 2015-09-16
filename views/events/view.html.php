@@ -29,6 +29,7 @@ class ScheduleViewEvents extends JView
 		// Build the list array for use in the layout
 		$lists['order'] = $filter_order;
 		$lists['order_Dir'] = $filter_order_Dir;
+		$lists['state'] = JHTML::_('grid.state', $filter_state);
 
 		// Get the model
 		$model =& $this->getModel("events");

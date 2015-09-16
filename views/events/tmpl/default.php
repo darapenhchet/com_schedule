@@ -2,6 +2,14 @@
 // No direct access.
 defined('_JEXEC') or die('Restricted access'); ?>
 <form action="index.php" method="post" name="adminForm">
+	<table>
+		<tr>
+			<td align="left" width="100%"></td>
+			<td nowrap="nowrap">
+				<?php echo $this->lists['state']; ?>
+			</td>
+		</tr>
+	</table>
 	<table class="adminlist">
 	<thead>
 		<tr>
