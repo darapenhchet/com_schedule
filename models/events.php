@@ -190,6 +190,22 @@ class ScheduleModelEvents extends JModel
 	public function update(){
 		$table =& $this->getTable("event");	
 	}
+
+	function delete( $cids )
+	{
+		$db = $this->getDBO();
+		$table = $db->nameQuote('#__schedule_ci');
+		$id = $db->nameQuote('id');
+		$query = ' DELETE FROM ' . $table
+	     	   . ' WHERE ' . $id
+			   . ' IN (' . implode( ',', $cids ) . ') ';
+		$db->setQuery( $query );
+		if( !$db->query() )
+		{
+			$errorMessage = $this->getDBO()->getErrorMsg();
+			JError::raiseError(500, 'Error deleting revues: '. $errorMessage );
+		}
+	}
 }
 
 ?>

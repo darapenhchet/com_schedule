@@ -6,16 +6,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<tr>
 			<td align="left" width="100%"></td>
 			<td nowrap="nowrap">
-				<?php echo $this->lists['state']; ?>
+				<?php //ho $this->lists['state']; ?>
 			</td>
 		</tr>
 	</table>
 	<table class="adminlist">
 	<thead>
 		<tr>
-			<th width="10"><?php echo JText::_( 'ID' ); ?></th>
+			<th width="10" align="center"><?php echo JText::_( 'ID' ); ?></th>
 			<th width="10">
-			<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->schedules ); ?>);" />
+			<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->events ); ?>);" />
 			</th>
 			<th>
 				<?php //echo JText::_('Title'); 
@@ -37,8 +37,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		</thead>
 		<tbody>
 		<?php
-			$k = 1;
-			$i = 1;
+			$k = 0;
+			$i = 0;
+			$j = 1;
 			foreach( $this->events as $row )
 			{
 				$checked = JHTML::_('grid.id', $i, $row->id );
@@ -46,8 +47,8 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				$link = JRoute::_('index.php?option='. JRequest::getVar( 'option' ). '&task=edit&cid[]='. $row->id
 							. '&hidemainmenu=1' );
 		?>
-			<tr class="<?php echo "row $k"; ?>">
-				<td><?php echo $i; ?></td>
+			<tr class="<?php echo "row$k"; ?>">
+				<td><?php echo $j; ?></td>
 				<td><?php echo $checked; ?></td>
 				<td>
 					<a href="<?php echo $link; ?>">
@@ -67,6 +68,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				<input type="hidden" name="userid" value="<?php echo $row->userid?> " />
 			</tr>
 		<?php
+			$j++;
 			$k = 1 - $k;
 			$i++;
 		} ?>

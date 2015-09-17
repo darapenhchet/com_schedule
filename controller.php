@@ -80,58 +80,29 @@ class ScheduleController extends JController
 	}
 
 	function update(){
-		echo "PUSH NOTIFICATION...";
-		//BEGIN NOTIFICATION
-		$message = 'This is alert from the APNS Server';
-		$badge = 1;
-		$sound = 'sub.caf';
-		$development = true;
-		echo '1';
-		$payload = array();
-		$payload['aps'] = array('alert' => $message, 'badge' => intval($badge), 'sound' => $sound);
-		$payload = json_encode($payload);
-		echo '2';
-		$apns_url = NULL;
-		$apns_cert = NULL;
-		$apns_port = 2195;
-		echo '3';
-		if($development){	
-			$apns_url = 'gateway.sandbox.push.apple.com';
-			$apns_cert = 'ck.pem';
-			echo '4';
-		}else{
-			$apns_url = 'gateway.push.apple.com';
-			$apns_cert = 'ck.pem';
-			echo '5';
-		}
 
-		$stream_context = stream_context_create();
-		stream_context_set_option($stream_context, 'ssl', 'local_cert', $apns_cert);
-		echo '6';
-		$apns = stream_socket_client('ssl://' . $apns_url . ':' . $apns_port, $error, $error_string, 60, STREAM_CLIENT_CONNECT, $stream_context);
-		if(!$apns){
-			echo 'Error: ' . $error_string;
-		}
-		echo '7';
-		$device_tokens = array();
-		array_push($device_tokens,'481b973bbf4643bac5aea7d369dd180fe6e301a881ec764555144885c897422b');
-		foreach($device_tokens as $device_token)
-		{
-			$apns_message = chr(0) . chr(0) . chr(32) . pack('H*', str_replace(' ', '', $device_token)) . chr(0) . chr(strlen($payload)) . $payload;
-			fwrite($apns, $apns_message);
-		}
-		echo '8';
-		@socket_close($apns);
-		@fclose($apns);
-		echo '9';
-		echo 'SUCCESSFULLY WITH PUSH NOTIFICATION';
-		// END PUSH NOTIFICATION
 	}
 
 	function cancel()
 	{
 		$redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
 		$this->setRedirect( $redirectTo, 'Cancelled' );
+	}
+
+	function remove()
+	{
+		// Retrieve the ids to be removed
+		$cids = JRequest::getVar('cid', null, 'default', 'array');
+		if( $cids === null )
+		{
+			// Make sure there were records to be removed
+			JError::raiseError( 500, 'No revues were selected for removal' );
+		}
+		$model =& $this->getModel( 'events');
+		$model->delete( $cids);
+		$redirectTo = JRoute::_('index.php?option='.JRequest::getVar( 'option' ).'&task=display');
+		$this->setRedirect( $redirectTo, 'Schedules Deleted.' );
+		
 	}
 }
 ?>
