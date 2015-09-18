@@ -80,7 +80,27 @@ class ScheduleController extends JController
 	}
 
 	function update(){
+		$user = JFactory::getUser();
+		$data = array(
+							"id"				=> JRequest::getVar('eventid', '', 'post'),
+		  					"title"				=> JRequest::getVar('title', '', 'post'),
+			  				"description"		=> JRequest::getVar('description', '', 'post'),
+			  				"place"				=> JRequest::getVar('place', '', 'post'),
+			  				"eventstart" 		=> JRequest::getVar('eventstart', '', 'post'),
+			  				"eventend"			=> JRequest::getVar('eventend', '', 'post'),
+			  				"userid"			=> $user->get('id'),
+			  				"imageurl"      	=> JRequest::getVar('imageurl', '', 'post'),
+			  				"url"				=> JRequest::getVar('url', '', 'post'),
+			  				"type"				=> JRequest::getVar('type', '', 'post')
+			  	);
 
+		//echo $data["title"];
+		$model =& $this->getModel( 'events' );
+		$model->editschedulepro($data);
+		// $model =& $this->getModel( 'events' );
+		// $model->store();
+		 $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
+		 $this->setRedirect( $redirectTo, 'Schedule Saved Successfully.' );
 	}
 
 	function cancel()

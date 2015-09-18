@@ -81,11 +81,11 @@ defined('_JEXEC') or die('Restricted access'); ?>
 			</table>
 			</fieldset>
 		</div>
-		<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+		<input type="hidden" name="eventid" value="<?php echo $this->event->id; ?>" />
 		<input type="hidden" name="cid[]" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="version" value="<?php echo $row->version; ?>" />
 		<input type="hidden" name="mask" value="0" />
-		<input type="hidden" name="userid" value="<?php echo $row->userid;?>" />
+		<input type="hidden" name="userid" value="<?php echo $this->event->userid;?>" />
 		<input type="hidden" name="option" value="<?php echo $option;?>" />
 		<input type="hidden" name="task" value="<?php JRequest::getVar('task')=="edit" ? "update":"save"?>" />
 	</form>

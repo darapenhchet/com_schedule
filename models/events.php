@@ -141,6 +141,28 @@ class ScheduleModelEvents extends JModel
 
 
 	}
+	public function editschedulepro($data){
+		$id = $data["id"];
+		$title = $data["title"];
+		$description = $data["description"];
+		$place = $data["place"];
+		$eventstart = $data["eventstart"];
+		$eventend= $data["eventend"];
+		$userid= $data["userid"];
+		$imageurl = $data["imageurl"];
+		$url = $data["url"];
+		$type= $data["type"];
+		$db =& JFactory::getDBO();
+		$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";
+		$query = "UPDATE #__schedule_ci SET title='".$title."', description='".$description."', place='".$place."', eventstart='".$eventstart."', ".
+				   "eventend='".$eventend."', userid='".$userid."', imageurl='".$imageurl."', url='".$url."', type='".$type."' where id=".$id."";
+		$db->setQuery($query);
+		$db->query();
+		$event_id = $db->getAffectedRows();
+		//echo $event_id;
+
+
+	}
 	public function store(){
 		// Get the table
 		$table =& $this->getTable("event");
