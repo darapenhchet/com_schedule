@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+ <name>Schedule</name>
+ <!-- The following elements are optional and free of formatting constraints -->
+ <creationDate>2015-09-25</creationDate>
+ <author>KH4IT</author>
+ <authorEmail></authorEmail>
+ <authorUrl></authorUrl>
+ <copyright>Copyright Info</copyright>
+ <license>License Info</license>
+ <!--  The version string is recorded in the components table -->
+ <version>1.00</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component is used for managing the schedule on the Senate</description>
+ 
+ <!-- Site Main File Copy Section -->
+ <!-- Note the folder attribute: This attribute describes the folder
+      to copy FROM in the package to install therefore files copied
+      in this section are copied from /site/ in the package -->
+ <!-- <files folder="site">
+  <filename>controller.php</filename>
+  <filename>hello.php</filename>
+  <filename>index.html</filename>
+  <filename>views/index.html</filename>
+  <filename>views/hello/index.html</filename>
+  <filename>views/hello/view.html.php</filename>
+  <filename>views/hello/tmpl/default.php</filename>
+  <filename>views/hello/tmpl/index.html</filename>
+ </files> -->
+ 
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>Schedule KH4IT</menu>
+ 
+  <!-- Administration Main File Copy Section -->
+  <files>
+    <folder>models</folder>
+    <folder>tables</folder>
+    <folder>views</folder> 
+    <filename>controller.php</filename>
+    <filename>schedule.xml</filename>
+    <filename>index.html</filename>
+    <filename>schedule.php</filename>
+  </files>
+ </administration>
+</install>
