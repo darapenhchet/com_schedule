@@ -26,11 +26,14 @@ class ScheduleViewEvents extends JView
 		$filter_order_Dir = $mainframe->getUserStateFromRequest(
 											$option.'filter_order_Dir',
 											'filter_order_Dir', 'ASC');
+		$filter_search = $mainframe->getUserStateFromRequest(
+											$option.'filter_search',
+											'filter_search');
 		
 		// Build the list array for use in the layout
 		$lists['order'] = $filter_order;
 		$lists['order_Dir'] = $filter_order_Dir;
-		$lists['state'] = JHTML::_('grid.state', $filter_state);
+		$lists['search'] = $filter_search;
 
 		// Get the model
 		$model =& $this->getModel("events");

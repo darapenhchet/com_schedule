@@ -4,9 +4,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <form action="index.php" method="post" name="adminForm">
 	<table>
 		<tr>
-			<td align="left" width="100%"></td>
-			<td nowrap="nowrap">
-				<?php //ho $this->lists['state']; ?>
+			<td align="left" width="100%">
+				<?php echo JText::_('Search'); ?>:
+				<input type="text" name="filter_search" id="search" value="<?php echo $this->lists['search'];?>" class="text_area"
+					onchange="document.adminForm.submit();" />
+				<button onclick="this.form.submit();">
+					<?php echo JText::_('Search'); ?>
+				</button>
+				<button onclick="document.adminForm.filter_search.value='';this.form.submit();">
+					<?php echo JText::_('Reset'); ?>
+				</button>
 			</td>
 		</tr>
 	</table>

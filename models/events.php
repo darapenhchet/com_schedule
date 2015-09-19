@@ -26,9 +26,28 @@ class ScheduleModelEvents extends JModel
 
 	function _buildQuery(){
 		$query = " SELECT s.*, u.name ".
-				 " FROM #__schedule_ci s".
-				 " LEFT JOIN #__users u ON s.userid = u.id";
+				 " FROM #__schedule_ci s ".
+				 " LEFT JOIN #__users u ON s.userid = u.id ".
+				 $this->_buildWhereQuery();
 		return $query;
+	}
+
+	function _buildWhereQuery(){
+		global $mainframe, $option;
+		$filter_search = $mainframe->getUserStateFromRequest($option.'filter_search','filter_search');
+		// Prepare the WHERE clause
+		$where = array();
+		// Determine search terms
+		if ($filter_search = trim($filter_search))
+		{
+			$filter_search = JString::strtolower($filter_search);
+			$db =& $this->_db;
+			$filter_search = $db->getEscaped($filter_search);
+			$where[] = ' (LOWER(title) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(revuer) LIKE "%'.$filter_search.'%")';
+		}
+		// return the WHERE clause
+		return (count($where)) ? ' WHERE '.implode(' AND ', $where): '';
 	}
 	public function getEvents(){
 		$db =& JFactory::getDBO();
@@ -39,9 +58,7 @@ class ScheduleModelEvents extends JModel
 			$query = $this->_buildQuery();
 			$limitstart = $this->getState('limitstart');
 			$limit = $this->getState('limit');
-			$this->_events = $this->_getList($query,
-			$limitstart,
-			$limit);
+			$this->_events = $this->_getList($query, $limitstart, $limit);
 		}
 		//$this->_events = $db->loadObjectList();
 		// Return the events data
