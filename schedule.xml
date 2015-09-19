@@ -4,12 +4,12 @@
  <!-- The following elements are optional and free of formatting constraints -->
  <creationDate>2015-09-25</creationDate>
  <author>KH4IT</author>
- <authorEmail></authorEmail>
+ <authorEmail>KH4IT</authorEmail>
  <authorUrl></authorUrl>
  <copyright>Copyright Info</copyright>
  <license>License Info</license>
  <!--  The version string is recorded in the components table -->
- <version>1.00</version>
+ <version>1.0.0</version>
  <!-- The description is optional and defaults to the name -->
  <description>This component is used for managing the schedule on the Senate</description>
  
@@ -27,7 +27,19 @@
   <filename>views/hello/tmpl/default.php</filename>
   <filename>views/hello/tmpl/index.html</filename>
  </files> -->
- 
+ <!--Install/Uninstall Section-->
+ <install>
+    <sql>
+        <file driver="mysql" charset="utf8">install.sql</file>
+    </sql>
+ </install>
+ <uninstall>
+    <sql>
+        <file driver="mysql">uninstall.sql</file>
+    </sql>
+ </uninstall>
+<installfile>install.php</installfile>
+<uninstallfile>uninstall.php</uninstallfile>
  <administration>
   <!-- Administration Menu Section -->
   <menu>Schedule KH4IT</menu>
@@ -41,6 +53,10 @@
     <filename>schedule.xml</filename>
     <filename>index.html</filename>
     <filename>schedule.php</filename>
+    <filename>install.php</filename>
+    <filename>uninstall.php</filename>
+    <filename>install.sql</filename>
+    <filename>uninstall.sql</filename>
   </files>
  </administration>
 </install>
