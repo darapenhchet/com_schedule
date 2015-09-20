@@ -116,7 +116,7 @@ class ScheduleController extends JController
 		if( $cids === null )
 		{
 			// Make sure there were records to be removed
-			JError::raiseError( 500, 'No revues were selected for removal' );
+			JError::raiseError( 500, 'No schedule were selected for removal' );
 		}
 		$model =& $this->getModel( 'events');
 		$model->delete( $cids);
