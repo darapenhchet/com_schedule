@@ -28,7 +28,9 @@ class ScheduleModelEvents extends JModel
 		$query = " SELECT s.*, u.name ".
 				 " FROM #__schedule_ci s ".
 				 " LEFT JOIN #__users u ON s.userid = u.id ".
-				 $this->_buildWhereQuery();
+				 $this->_buildWhereQuery().
+				 " ORDER BY s.datecreate DESC";
+
 		return $query;
 	}
 
@@ -43,8 +45,13 @@ class ScheduleModelEvents extends JModel
 			$filter_search = JString::strtolower($filter_search);
 			$db =& $this->_db;
 			$filter_search = $db->getEscaped($filter_search);
-			$where[] = ' (LOWER(title) LIKE "%'.$filter_search.'%"'
-					 . ' OR LOWER(revuer) LIKE "%'.$filter_search.'%")';
+			$where[] = ' (LOWER(s.title) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.description) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.place) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.eventstart) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.eventend) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.datecreate) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(u.name) LIKE "%'.$filter_search.'%")';
 		}
 		// return the WHERE clause
 		return (count($where)) ? ' WHERE '.implode(' AND ', $where): '';

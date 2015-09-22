@@ -75,8 +75,15 @@ class ScheduleController extends JController
 		$model->saveschedulepro($data);
 		// $model =& $this->getModel( 'events' );
 		// $model->store();
-		 $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
-		 $this->setRedirect( $redirectTo, 'Schedule Saved Successfully.' );
+		/*$redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
+		$this->setRedirect( $redirectTo, 'Schedule Saved Successfully.' );*/
+		$message = JRequest::getVar('title', '', 'post');
+		if(strlen($message)>=110){
+			$message = substr($message,0,107).'...';
+		}
+		$redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
+		$this->setRedirect('https://schedule-darapenhchet-3.c9.io/index.php/notification/addnewschedule?msg='.$message.
+						'&url=' .urlencode($redirectTo), 'Schedule Saved Successfully.' );
 	}
 
 	function update(){
