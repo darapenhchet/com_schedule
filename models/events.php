@@ -109,6 +109,22 @@ class ScheduleModelEvents extends JModel
 		}
 	}
 
+	public function getEventType(){
+		$db = $this->getDBO();
+		$query = " SELECT * FROM #__schedule_ci_type ";
+		$db->setQuery($query);
+		$event = $db->loadObjectList();
+		if($event === null)
+		{
+			JError::raiseError(500, 'Event not found.');
+		}
+		else
+		{
+			// Return the Event data
+			return $event;
+		}
+	}
+
 	function getNewEvent()
 	{
 		$newEvent =& $this->getTable( 'event' );

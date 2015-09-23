@@ -39,7 +39,26 @@ defined('_JEXEC') or die('Restricted access'); ?>
 							   value="<?php echo $this->event->place;?>" />
 					</td>
 				</tr>	
+				<tr>
+					<td width="100" align="right" class="key">
+						<label for="type">
+							<?php echo JText::_( 'Type' ); ?>:
+						</label>
+					</td>
+					<td>
+						
+						<select class="inputbox" name="type" id="type">
+							<?php foreach( $this->eventtype as $row )
+								{  ?>
+								<option value="<?php echo $row->id;?>" 
+									<?php if($row->id == $this->event->type ){?>selected
+									<?php }?>
+								><?php echo $row->title;?></option>
 
+							<?php } ?>
+						</select>
+					</td>
+				</tr>
 				<tr>
 					<td width="100" align="right" class="key">
 						<label for="eventstart">

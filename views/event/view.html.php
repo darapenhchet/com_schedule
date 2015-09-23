@@ -17,8 +17,10 @@ class ScheduleViewEvent extends JView
 		// Get the event
 		$model =& $this->getModel();
 		$event = $model->getEvent($id);
+		$eventtype = $model->getEventType();
 		//var_dump($event);
 		$this->assignRef('event', $event);
+		$this->assignRef('eventtype', $eventtype);
 		parent::display();
 	}
 
@@ -29,8 +31,10 @@ class ScheduleViewEvent extends JView
 
 		$model =& $this->getModel();
 		$event = $model->getNewEvent();
+		$eventtype = $model->getEventType();
 		//var_dump($event);
 		$this->assignRef('event', $event);
+		$this->assignRef('eventtype', $eventtype);
 		parent::display();
 	}
 }
