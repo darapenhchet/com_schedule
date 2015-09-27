@@ -176,7 +176,9 @@ class ScheduleModelEvents extends JModel
 		$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";
 		$db->setQuery($query);
 		$db->query();
-		$event_id = $db->getAffectedRows();
+		//$event_id = $db->getAffectedRows();
+		$event_id = $db->insertid();
+		return $event_id;
 		//echo $event_id;
 
 
