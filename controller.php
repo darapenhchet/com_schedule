@@ -67,7 +67,8 @@ class ScheduleController extends JController
 			  				"userid"			=> $user->get('id'),
 			  				"imageurl"      	=> JRequest::getVar('imageurl', '', 'post'),
 			  				"url"				=> JRequest::getVar('url', '', 'post'),
-			  				"type"				=> JRequest::getVar('type', '', 'post')
+			  				"type"				=> JRequest::getVar('type', '', 'post'),
+			  				"shift"				=> JRequest::getVar('shift', '', 'post')
 			  	);
 
 		//echo $data["title"];
@@ -98,7 +99,8 @@ class ScheduleController extends JController
 			  				"userid"			=> $user->get('id'),
 			  				"imageurl"      	=> JRequest::getVar('imageurl', '', 'post'),
 			  				"url"				=> JRequest::getVar('url', '', 'post'),
-			  				"type"				=> JRequest::getVar('type', '', 'post')
+			  				"type"				=> JRequest::getVar('type', '', 'post'),
+			  				"shift"				=> JRequest::getVar('shift', '', 'post')
 			  	);
 
 		//echo $data["title"];

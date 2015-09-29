@@ -61,6 +61,22 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				</tr>
 				<tr>
 					<td width="100" align="right" class="key">
+						<label for="shift">
+							<?php echo JText::_( 'Shift' ); ?>:
+						</label>
+					</td>
+					<td>
+						<select class="inputbox" name="shift" id="shift">
+							<option value="morning" selected>Morning</option>
+							<option value="afternoon">Afternoon</option>
+							<option value="evening">Evening</option>
+							<option value="fullday">Full Day</option>
+
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" align="right" class="key">
 						<label for="eventstart">
 							<?php echo JText::_( 'Event Start' ); ?>:
 						</label>

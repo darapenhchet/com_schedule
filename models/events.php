@@ -170,10 +170,11 @@ class ScheduleModelEvents extends JModel
 		$imageurl = $data["imageurl"];
 		$url = $data["url"];
 		$type= $data["type"];
+		$shift = $data["shift"];
 		$db =& JFactory::getDBO();
 		//echo $title;
 		//$query = "INSERT INTO '#__schedule_ci' ('title', 'description', 'place', 'eventstart', 'eventend', 'userid', 'imageurl', 'url', 'type') VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";\
-		$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";
+		$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type, shift) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."', '".$shift."')";
 		$db->setQuery($query);
 		$db->query();
 		//$event_id = $db->getAffectedRows();
@@ -194,10 +195,11 @@ class ScheduleModelEvents extends JModel
 		$imageurl = $data["imageurl"];
 		$url = $data["url"];
 		$type= $data["type"];
+		$shift = $data["shift"];
 		$db =& JFactory::getDBO();
-		$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";
+		//$query = "INSERT INTO #__schedule_ci (title, description, place, eventstart, eventend, userid, imageurl, url, type) VALUES ('".$title."', '". $description. "', '".$place."', '".$eventstart."', '".$eventend."', '".$userid."', '".$imageurl."', '".$url."', '".$type."')";
 		$query = "UPDATE #__schedule_ci SET title='".$title."', description='".$description."', place='".$place."', eventstart='".$eventstart."', ".
-				   "eventend='".$eventend."', userid='".$userid."', imageurl='".$imageurl."', url='".$url."', type='".$type."' where id=".$id."";
+				   "eventend='".$eventend."', userid='".$userid."', imageurl='".$imageurl."', url='".$url."', type='".$type."', shift='".$shift."' where id=".$id."";
 		$db->setQuery($query);
 		$db->query();
 		$event_id = $db->getAffectedRows();

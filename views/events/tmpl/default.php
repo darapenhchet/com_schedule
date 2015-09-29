@@ -30,7 +30,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				?>
 
 				</th>
-			<th><?php echo JText::_('Description'); ?></th>
+			<th><?php echo JText::_('Shift'); ?></th>
 			<th width="10%"><?php echo JText::_('Place'); ?></th>
 			<th width="10%">
 				<?php echo JText::_('Start Date'); ?>
@@ -62,7 +62,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 						<?php echo $row->title; ?>
 					</a>
 				</td>
-				<td><?php echo $row->description; ?></td>
+				<td><?php echo $row->shift; ?></td>
 				<td align="center"><?php echo $row->place; ?></td>
 				<td align="center"><?php echo $row->eventstart; ?></td>
 				<td align="center"><?php echo $row->eventend ;	?></td>
