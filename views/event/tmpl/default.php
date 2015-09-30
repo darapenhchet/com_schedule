@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 						</label>
 					</td>
 					<td>
-						<textarea class="inputbox" type="text" name="description" size="60" id="description"
+						<textarea class="inputbox" type="text" name="description" style="width:318px;" id="description"
 							   ><?php echo $this->event->description;?></textarea>
 					</td>
 				</tr>	
@@ -85,10 +85,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
 						<?php echo JHTML::_( 'calendar'
 											, JHTML::_('date'
 												      , $this->event->eventstart
-												      , JText::_('%Y-%m-%d %I:%M:%S'))
+												      , JText::_('%Y-%m-%d %H:%M:%S'))
 											, 'eventstart'
 											, 'eventstart'
-											, JText::_('%Y-%m-%d %I:%M:%S')
+											, JText::_('%Y-%m-%d %H:%M:%S')
 											, array( 'class'=>'inputbox'
 													,'size'=>'25'
 													,'maxlength'=>'19' ) ); ?>
@@ -104,7 +104,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 						<?php echo JHTML::_( 'calendar'
 											, JHTML::_('date'
 												      , $this->event->eventend
-												      , JText::_('%Y-%m-%d %I:%M:%S'))
+												      , JText::_('%Y-%m-%d %H:%M:%S'))
 											, 'eventend'
 											, 'eventend'
 											, JText::_('%Y-%m-%d %I:%M:%S')

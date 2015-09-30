@@ -51,10 +51,11 @@ class ScheduleModelEvents extends JModel
 					 . ' OR LOWER(s.eventstart) LIKE "%'.$filter_search.'%"'
 					 . ' OR LOWER(s.eventend) LIKE "%'.$filter_search.'%"'
 					 . ' OR LOWER(s.datecreate) LIKE "%'.$filter_search.'%"'
+					 . ' OR LOWER(s.shift) LIKE "%'.$filter_search.'%"'
 					 . ' OR LOWER(u.name) LIKE "%'.$filter_search.'%")';
 		}
 		// return the WHERE clause
-		return (count($where)) ? ' WHERE '.implode(' AND ', $where): '';
+		return (count($where)) ? ' WHERE s.status=1 '.implode(' AND ', $where): ' WHERE s.status=1 ';
 	}
 	public function getEvents(){
 		$db =& JFactory::getDBO();
@@ -102,7 +103,7 @@ class ScheduleModelEvents extends JModel
 		$db = $this->getDBO();
 		$query = " SELECT s.*, u.name ".
 			     " FROM #__schedule_ci s" .
-			     " LEFT JOIN #__users u ON s.userid = u.id WHERE s.id = " . $id;
+			     " LEFT JOIN #__users u ON s.userid = u.id WHERE s.status=1 AND s.id = " . $id;
 		$db->setQuery($query);
 		$event = $db->loadObject();
 		if($event === null)
@@ -262,7 +263,7 @@ class ScheduleModelEvents extends JModel
 		$db = $this->getDBO();
 		$table = $db->nameQuote('#__schedule_ci');
 		$id = $db->nameQuote('id');
-		$query = ' DELETE FROM ' . $table
+		$query = ' UPDATE '.$table.' SET status=0' 
 	     	   . ' WHERE ' . $id
 			   . ' IN (' . implode( ',', $cids ) . ') ';
 		$db->setQuery( $query );

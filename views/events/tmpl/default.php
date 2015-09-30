@@ -62,7 +62,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 						<?php echo $row->title; ?>
 					</a>
 				</td>
-				<td><?php echo $row->shift; ?></td>
+				<td align="center"><?php echo $row->shift; ?></td>
 				<td align="center"><?php echo $row->place; ?></td>
 				<td align="center"><?php echo $row->eventstart; ?></td>
 				<td align="center"><?php echo $row->eventend ;	?></td>
